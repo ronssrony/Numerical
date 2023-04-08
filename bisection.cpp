@@ -33,7 +33,7 @@ int main()
       cout<<"THE ROOT DOESN'T LIES INTO THE INTERVAL PLEASE " ;
    }
    int iter = 1 ;
-   cout<<"[iteration]"<<"  "<<"a"<<"  "<<"b"<<"  "<<"fa"<<"  "<<"fb"<<"  "<<"c"<<"  "<<"fc"<<"  "<<"error"<<endl<<endl;
+   cout<<"[iteration]"<<"  "<<"a"<<"  "<<"b"<<"  "<<"fa"<<"  "<<"fb"<<"  "<<"c"<<"  "<<"fc"<<endl<<endl;
     while(fabs(a-b)>epsilon)
     {
         c = (a+b)/2 ;
@@ -47,7 +47,7 @@ int main()
             b = c ;
         }
       
-        cout<<iter<<"  "<<a<<"  "<<b<<"  "<<fa<<"  "<<fb<<"  "<<c<<"  "<<fc<<"  "<<error<<endl;
+        cout<<iter<<"  "<<a<<"  "<<b<<"  "<<fa<<"  "<<fb<<"  "<<c<<"  "<<fc<<endl;
         iter++;
     }
     cout<<endl;
