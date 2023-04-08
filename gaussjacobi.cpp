@@ -41,59 +41,64 @@ bool validornot(double augment[][n+1] , int n)
       }
       return true ;
  }
- void findvalues(double augment[][n+1] , int m , double value_old[] ,int n)
- {        
-          int iteration ;
-          int flag =  0 ;
-          double  sum = 0 ;
-          double value_new[n] ;
-          for(iteration =1 ;iteration<=m ; iteration++)
-          {
-            for(int i =  0 ;i<n ; i++)
-            {
-               sum = 0 ;
-               for(int j = 0 ; j<n ;j++)
-               {
-                  if(i!=j)
-                  {
-                     sum+=augment[i][j]*value_old[j] ;
-                  }
-               }
-               value_new[i] = (augment[i][n]-sum)/augment[i][i] ;
-            }
+ void findvalues(double augment[][n+1], int m, double value_old[], int n) 
+{        
+  int iteration;
+  int flag = 0;
+  double sum = 0;
+  double value_new[n];
+  for (int i = 0; i < n; i++) 
+  {
+    value_new[i] = 0;
+  }
 
+  for (iteration = 1; iteration <= m; iteration++) 
+  {
+    bool found_error = false;
 
-            for(int k = 0 ;  k<n ; k++)
-          {
-            if(fabs(value_old[k]-value_new[k])<epsilon)
-            {
-               continue ;
-            }
-            else 
-            {
-               flag = 1 ;
-               break;
-            }
-          }
-          if(flag = 0)
-          {
-            printvalue(iteration , value_new) ;
-            return ;
-          }
-          flag = 1 ; 
+    for (int i = 0; i < n; i++) 
+    {
+      sum = 0;
+      for (int j = 0; j < n; j++) 
+      {
+        if (i != j) 
+        {
+          sum += augment[i][j] * value_old[j];
+        }
+      }
+      value_new[i] = (augment[i][n] - sum) / augment[i][i];
+    }
 
-          printvalue(iteration,value_new) ;
+    for (int k = 0; k < n; k++) 
+    {
+      if (fabs(value_old[k] - value_new[k]) < epsilon) 
+      {
+        continue;
+      }
+      else 
+      {
+        found_error = true;
+        break;
+      }
+    }
 
-          for(int i = 0 ; i<n; i++)
-          {
-            value_old[i] = value_new[i] ;
-          }
-          }
-          printvalue(iteration,value_new) ;
-          
-          
-          
- }
+    if (!found_error) 
+    {
+      printvalue(iteration, value_new);
+      return;
+    }
+
+    printvalue(iteration, value_new);
+
+    for (int i = 0; i < n; i++) 
+    {
+      value_old[i] = value_new[i];
+    }
+  }
+
+  printvalue(iteration, value_new);
+}
+
 
 int main()
 {
@@ -119,7 +124,7 @@ int main()
       cout<<"Gauss jacobi method cannot be applied " ;
       return 0 ;
    }
-   cout<<"Gauss jacobi method is applicable ";
+   cout<<"Gauss jacobi method is applicable "<<endl;
    for(int i  = 0 ; i<n ; i++)
    {
       value[i] = 0 ;
