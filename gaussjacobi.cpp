@@ -45,7 +45,7 @@ bool validornot(double augment[][n+1] , int n)
  {        
           int iteration ;
           int flag =  0 ;
-          double ratio, sum = 0 ;
+          double  sum = 0 ;
           double value_new[n] ;
           for(iteration =1 ;iteration<=m ; iteration++)
           {
