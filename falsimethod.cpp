@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+#define epsilon .0001
 
 
 double funt (double x)
@@ -33,7 +34,7 @@ int main()
    }
    int iter = 1 ;
    cout<<"[iteration]"<<"  "<<"a"<<"  "<<"b"<<"  "<<"fa"<<"  "<<"fb"<<"  "<<"c"<<"  "<<"fc"<<"  "<<"error"<<endl<<endl;
-    while(error>5)
+    while(error>epsilon)
     {   double old = c ;
         c = ((a*fb)-(b*fa))/(fb-fa) ;
         fc = funt(c) ;
@@ -45,8 +46,8 @@ int main()
         {
             b = c ;
         }
-        error = fabs((c-old)/c)*100 ;
-        cout<<iter<<"  "<<a<<"  "<<b<<"  "<<fa<<"  "<<fb<<"  "<<c<<"  "<<fc<<"  "<<error<<endl;
+        error = fabs((c-old));
+        cout<<iter<<"  "<<a<<"  "<<b<<"  "<<fa<<"  "<<fb<<"  "<<c<<"  "<<fc<<"  "<<error*100<<endl;
         iter++;
     }
     cout<<endl;
